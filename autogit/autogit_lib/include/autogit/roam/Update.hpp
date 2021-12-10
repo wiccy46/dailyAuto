@@ -1,5 +1,5 @@
 #pragma once
 
 namespace autogit::roam {
-  void addAndPush();
+  void addAndPush(bool amend);
 }// namespace autogit::roam

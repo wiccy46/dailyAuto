@@ -2,7 +2,12 @@ from conans import ConanFile, CMake
 
 class CppStarterConan(ConanFile):
    settings = "os", "compiler", "build_type", "arch"
-   requires = ["gtest/1.11.0", "boost/1.77.0"]
+   requires = [
+      "gtest/1.11.0",
+      "boost/1.77.0",
+      "cxxopts/3.0.0"
+   ]
+
    generators = "cmake", "gcc"
    default_options = {}
 

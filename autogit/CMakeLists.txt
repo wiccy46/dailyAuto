@@ -9,4 +9,5 @@ set(SOURCES ${AUTOGIT_SOURCES})
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} PUBLIC
     autogit_lib
+    CONAN_PKG::cxxopts
 )

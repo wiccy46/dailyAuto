@@ -10,7 +10,7 @@ namespace autogit::roam {
 
 std::string ROAMSPACE = "~/Documents/org/roam/";
 
-void addAndPush() {
+void addAndPush(bool amend) {
   std::cout << "Update Roam: Step 1. Git status" << std::endl;
   std::string stdout;
   std::string gitstatus = "git -C " + ROAMSPACE + " status";
@@ -22,9 +22,20 @@ void addAndPush() {
   } else {
     // git add all but remove any dotfile
     std::string gitAddAll = "git -C " + ROAMSPACE + " add -- . \':!.*\'";
-    std::string gitCommit = "git -C " + ROAMSPACE + " commit -m \"" +
-                            autogit::getCurrentTime() + "\"";
-    std::string gitPush = "git -C " + ROAMSPACE + " push";
+    std::string gitCommit;
+    std::string gitPush;
+    if (!amend)
+    {
+      gitCommit = "git -C " + ROAMSPACE + " commit -m \"" +
+                              autogit::getCurrentTime() + "\"";
+      gitPush = "git -C " + ROAMSPACE + " push";
+    } else 
+    {
+      gitCommit = "git -C " + ROAMSPACE + " commit --amend -m \"" +
+                              autogit::getCurrentTime() + "\"";
+
+      gitPush = "git -C " + ROAMSPACE + " push --force";
+    }
     std::cout << gitAddAll << std::endl;
     stdout = autogit::exec((gitAddAll).c_str());
     std::cout << gitCommit << std::endl;
