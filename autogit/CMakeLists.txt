@@ -9,5 +9,4 @@ set(SOURCES ${AUTOGIT_SOURCES})
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} PUBLIC
     autogit_lib
-    PUBLIC CONAN_PKG::boost
 )

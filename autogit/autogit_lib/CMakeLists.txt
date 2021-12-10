@@ -4,10 +4,12 @@ project(autogit_lib)
 
 set(HEADERS
   include/autogit/helpers.hpp
+  include/autogit/roam/Update.hpp
   )
 
 set(SOURCES
   src/autogit/helpers.cpp
+  src/autogit/roam/Update.cpp
   )
 
 add_library(${PROJECT_NAME} ${HEADERS} ${SOURCES})
